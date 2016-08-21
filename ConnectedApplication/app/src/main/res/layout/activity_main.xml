@@ -1,17 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:paddingLeft="@dimen/activity_horizontal_margin"
-	android:paddingRight="@dimen/activity_horizontal_margin"
-	android:paddingTop="@dimen/activity_vertical_margin"
-	android:paddingBottom="@dimen/activity_vertical_margin"
+	android:orientation="horizontal"
+	android:weightSum="1"
 	tools:context="com.example.zachary.connectedapplication.MainActivity">
 
-	<TextView
-		android:text="Hello World!"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"/>
-</RelativeLayout>
+	<LinearLayout
+		android:layout_weight="0.4"
+		android:layout_width="0dp"
+		android:orientation="vertical"
+		android:layout_height="match_parent"
+		android:background="@drawable/list_background">
+
+		<EditText
+			android:id="@+id/searchField"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="5dp"
+			android:layout_marginLeft="5dp"
+			android:layout_marginRight="5dp"
+			android:hint="Search books..."
+			android:maxLines="1"
+			android:ellipsize="end"
+			android:imeOptions="actionSearch"
+			android:inputType="text"/>
+
+		<Button
+			android:id="@+id/searchBtn"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="0dp"
+			android:layout_marginLeft="5dp"
+			android:layout_marginRight="5dp"
+			android:layout_marginBottom="10dp"
+			android:text="Search"
+			android:onClick="searchBooks"/>
+
+		<ListView
+			tools:listitem="@layout/book_list_listing"
+			android:id="@+id/searchResults"
+			android:layout_width="fill_parent"
+			android:layout_height="match_parent"
+			android:divider="@android:color/darker_gray"
+			android:dividerHeight="1dp"/>
+
+	</LinearLayout>
+
+	<ScrollView
+		android:id="@+id/scrollView"
+		android:layout_weight="0.6"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:fillViewport="true">
+
+		<TableLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:stretchColumns="1">
+
+			<TableRow>
+
+				<LinearLayout
+					android:layout_weight="0.6"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:orientation="vertical"
+					android:paddingTop="@dimen/activity_vertical_margin"
+					android:paddingBottom="@dimen/activity_vertical_margin"
+					android:paddingLeft="@dimen/activity_horizontal_margin"
+					android:paddingRight="@dimen/activity_horizontal_margin">
+
+					<com.loopj.android.image.SmartImageView
+						android:id="@+id/bookImg"
+						android:layout_width="100dp"
+						android:layout_height="100dp"
+						android:layout_gravity="center"
+						android:src="@mipmap/ic_launcher"/>
+
+					<LinearLayout
+						android:layout_marginTop="20dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingRight="10dp"
+							android:text="Title:"
+							android:textStyle="bold"
+							android:textSize="15dp"/>
+
+						<TextView
+							android:id="@+id/bookTitle"
+							android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+							android:text="Book title goes here"
+							android:textStyle="normal"
+							android:textSize="15dp"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_marginTop="10dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingRight="10dp"
+							android:text="Author(s):"
+							android:textStyle="bold"
+							android:textSize="15dp"/>
+
+						<TextView
+							android:id="@+id/bookAuthor"
+							android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+							android:text="Zachary Gover"
+							android:textStyle="normal"
+							android:textSize="15dp"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_marginTop="10dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingRight="10dp"
+							android:text="Publisher:"
+							android:textStyle="bold"
+							android:textSize="15dp"/>
+
+						<TextView
+							android:id="@+id/bookPublisher"
+							android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+							android:text="Addison-Wesley Professional"
+							android:textStyle="normal"
+							android:textSize="15dp"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_marginTop="10dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingRight="10dp"
+							android:text="Pub. Date:"
+							android:textStyle="bold"
+							android:textSize="15dp"/>
+
+						<TextView
+							android:id="@+id/bookPubDate"
+							android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+							android:text="2008-05-08"
+							android:textStyle="normal"
+							android:textSize="15dp"/>
+
+					</LinearLayout>
+
+					<TextView
+						android:layout_marginTop="10dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:paddingRight="10dp"
+						android:text="Description:"
+						android:textStyle="bold"
+						android:textSize="15dp"/>
+
+					<TextView
+						android:id="@+id/bookDescription"
+						android:layout_marginTop="10dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:paddingRight="10dp"
+						android:text="Are you looking for a deeper understanding of the Java™ programming language so that you can write code that is clearer, more correct, more robust, and more reusable? Look no further! Effective Java™, Second Edition, brings together seventy-eight indispensable programmer’s rules of thumb: working, best-practice solutions for the programming challenges you encounter every day. This highly anticipated new edition of the classic, Jolt Award-winning work has been thoroughly updated to cover Java SE 5 and Java SE 6 features introduced since the first edition. Bloch explores new design patterns and language idioms, showing you how to make the most of features ranging from generics to enums, annotations to autoboxing. Each chapter in the book consists of several “items” presented in the form of a short, standalone essay that provides specific advice, insight into Java platform subtleties, and outstanding code examples. The comprehensive descriptions and explanations for each item illuminate what to do, what not to do, and why. Highlights include: New coverage of generics, enums, annotations, autoboxing, the for-each loop, varargs, concurrency utilities, and much more Updated techniques and best practices on classic topics, including objects, classes, libraries, methods, and serialization How to avoid the traps and pitfalls of commonly misunderstood subtleties of the language Focus on the language and its most fundamental libraries: java.lang, java.util, and, to a lesser extent, java.util.concurrent and java.io Simply put, Effective Java™, Second Edition, presents the most practical, authoritative guidelines available for writing efficient, well-designed programs."
+						android:textSize="15dp"/>
+
+				</LinearLayout>
+
+			</TableRow>
+
+		</TableLayout>
+
+	</ScrollView>
+
+</LinearLayout>
